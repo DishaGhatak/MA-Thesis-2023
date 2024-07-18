@@ -90,7 +90,7 @@ stargazer(desc_stat_tab,
 
 
 ############################################################################
-Social Expenditure Per Capita - Alignment Regression Tables
+#Social Expenditure Per Capita - Alignment Regression Tables
 ############################################################################
 
 
@@ -261,7 +261,7 @@ Model41 <- (lm(log(SocExpPC) ~ Alignment2 +
                 Turnout +
                 WinmargSS +
                 `Coalition at State` +
-                Alignment1*WinmargSS,
+                Alignment2*WinmargSS,
               data=dataset))
 
 
@@ -272,7 +272,7 @@ Model51 <- (lm(log(SocExpPC) ~ Alignment2 +
                 Turnout +
                 WinmargSS +
                 `Coalition at State` +
-                Alignment1*WinmargSS +
+                Alignment2*WinmargSS +
                 as.factor(States)-1,
               data=dataset))
 
@@ -283,15 +283,15 @@ Model61 <- (lm(log(SocExpPC) ~ Alignment2 +
                 Turnout +
                 WinmargSS +
                 `Coalition at State` +
-                Alignment1*WinmargSS +
+                Alignment2*WinmargSS +
                 Trend +
                 as.factor(States)-1,
               data=dataset))
 
 
-stargazer(Model41, Model51, Model61, type = 'text', omit = c (10:36)) 
+stargazer(Model41, Model51, Model61, type = 'text', omit = c (11:37)) 
 
-stargazer(Model41, Model51, Model61, type = 'latex', out = 'tablea2', omit = c (10:36)) 
+stargazer(Model41, Model51, Model61, type = 'latex', out = 'tablea2', omit = c (11:37)) 
 
 ### Models 1, 2, and 3 controlling for level of urbanization
 
