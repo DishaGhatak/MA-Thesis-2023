@@ -24,8 +24,10 @@ View(dataset)
 
 
 #################
-# Table 1: Descriptive Statistics
+#Summary Statistics
 #################
+
+#The Summary Statistics Table
 
 desc_stat_tab <- data.frame(cbind( as.numeric(paste(dataset$Year)),
                                    as.numeric(paste(dataset$SocExp)),
@@ -42,6 +44,7 @@ desc_stat_tab <- data.frame(cbind( as.numeric(paste(dataset$Year)),
                                    as.numeric(paste(dataset$AgriNDP)),
                                    as.numeric(paste(dataset$ElectionYear1))
                              ))
+
 
 #Table as text 
 
@@ -62,6 +65,7 @@ stargazer(desc_stat_tab,
                              "Coalition at Centre",
                              "Agriculture/NDP (in millions of INR)",
                              "Election Year"))
+
 
 #Table for Latex
 
@@ -84,11 +88,14 @@ stargazer(desc_stat_tab,
                              "Agriculture/NDP (in millions of INR)",
                              "Election Year"))
 
-######################################################
-# Table 2: Social Expenditure Per Capita - Alignment
-######################################################
 
-### Model 1
+############################################################################
+Social Expenditure Per Capita - Alignment Regression Tables
+############################################################################
+
+
+### Model 1 (social exp ~ alignment, no fixed effects, no time trend)
+
 
 Model1 <- (lm(log(SocExpPC) ~ Alignment1 +
                  log(GDPPC) +
@@ -99,10 +106,11 @@ Model1 <- (lm(log(SocExpPC) ~ Alignment1 +
                 `Coalition at State`,
                  data=dataset))
 
-stargazer(Model1, type = 'text')
+stargazer(Model1, type = 'text') #viewing model 1 coefficients
 
 
-### Model 2
+### Model 2 (social exp ~ alignment with state fixed effects, no time trend)
+
 
 Model2 <- (lm(log(SocExpPC) ~ Alignment1 +
                 log(GDPPC) +
@@ -114,12 +122,11 @@ Model2 <- (lm(log(SocExpPC) ~ Alignment1 +
                 as.factor(States)-1,
                 data=dataset))
 
-stargazer(Model2, type = 'text', omit = c(8:35))
-
-stargazer(Model1, Model2, type = 'text', omit = c(9:35))
+stargazer(Model2, type = 'text', omit = c(8:35)) #viewing model 2 coefficients
 
 
-### Model 3
+### Model 3 (social exp ~ alignment with state fixed effects and a linear time trend)
+
 
 Model3 <- (lm(log(SocExpPC) ~ Alignment1 +
                 log(GDPPC) +
@@ -132,10 +139,14 @@ Model3 <- (lm(log(SocExpPC) ~ Alignment1 +
                 as.factor(States)-1,
                 data=dataset))
 
-stargazer(Model3, type = 'text', omit = 9:37)
+
+stargazer(Model3, type = 'text', omit = 9:37) #viewing model 3 coefficients
 
 
-stargazer(Model1, Model2, Model3, type = 'text', omit = 10:36)
+stargazer(Model1, Model2, Model3, type = 'text', omit = 10:36) #putting the coefficients of model 1, 2, and 3, together into the table
+
+
+### Model 4 (social exp ~ alignment*victorymargin, no fixed effects, no time trend)
 
 
 Model4 <- (lm(log(SocExpPC) ~ Alignment1 +
@@ -148,7 +159,11 @@ Model4 <- (lm(log(SocExpPC) ~ Alignment1 +
                 Alignment1*WinmargSS,
                 data=dataset))
 
-stargazer(Model4, type = 'text')
+
+stargazer(Model4, type = 'text') #viewing model 4 coefficients
+
+
+### Model 5 (social exp ~ alignment*victorymargin with state fixed effects, no time trend)
 
 
 Model5 <- (lm(log(SocExpPC) ~ Alignment1 +
@@ -162,7 +177,11 @@ Model5 <- (lm(log(SocExpPC) ~ Alignment1 +
                 as.factor(States)-1,
               data=dataset))
 
-stargazer(Model5, type = 'text', omit = c(8:35))
+
+stargazer(Model5, type = 'text', omit = c(8:35)) #viewing model 5 coefficients
+
+
+### Model 6 (social exp ~ alignment*victorymargin with state fixed effects and linear time trend)
 
 
 Model6 <- (lm(log(SocExpPC) ~ Alignment1 +
@@ -177,10 +196,11 @@ Model6 <- (lm(log(SocExpPC) ~ Alignment1 +
                           as.factor(States)-1,
                           data=dataset))
 
-stargazer(Model6, type = 'text', omit = c(10:36))
+
+stargazer(Model6, type = 'text', omit = c(10:36)) #viewing model 6 coefficients
 
 
-stargazer(Model4, Model5, Model6, type = 'text', omit = c (10:36))
+stargazer(Model4, Model5, Model6, type = 'text', omit = c (10:36)) #putting the coefficients of model 4, 5, and 6, together into the table
 
 
-stargazer(Model1, Model2, Model3, Model4, Model5, Model6, omit = c (10:36), type = 'latex', out = 'regtab.tex')
+stargazer(Model1, Model2, Model3, Model4, Model5, Model6, omit = c (10:36), type = 'latex', out = 'regtab.tex') #putting the coefficients of models 1, 2, 3, 4, 5, and 6, together into the final reg table
