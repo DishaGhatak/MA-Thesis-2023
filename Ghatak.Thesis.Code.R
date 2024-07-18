@@ -201,3 +201,270 @@ stargazer(Model6, type = 'text', omit = c(10:36)) #viewing model 6 coefficients
 
 
 stargazer(Model4, Model5, Model6, type = 'latex', out = 'reg2.tex', omit = c (10:36)) #putting the coefficients of model 4, 5, and 6, together into the table
+
+
+# stargazer(Model1, Model2, Model3, Model4, Model5, Model6, omit = c (10:36), type = 'latex', out = 'regtab.tex') #putting the coefficients of models 1, 2, 3, 4, 5, and 6, together into the final reg table
+
+
+######################
+#Appendix Tables
+######################
+
+
+### Models 1, 2, and 3 with alternative alignment variable
+
+Model11 <- (lm(log(SocExpPC) ~ Alignment2 +
+                log(GDPPC) +
+                HDI +
+                ElectionYear1 +
+                Turnout +
+                WinmargSS +
+                `Coalition at State`,
+              data=dataset))
+
+
+Model21 <- (lm(log(SocExpPC) ~ Alignment2 +
+                log(GDPPC) +
+                HDI +
+                ElectionYear1 +
+                Turnout +
+                WinmargSS +
+                `Coalition at State` +
+                as.factor(States)-1,
+              data=dataset))
+
+
+Model31 <- (lm(log(SocExpPC) ~ Alignment2 +
+                log(GDPPC) +
+                HDI +
+                ElectionYear1 +
+                Turnout +
+                WinmargSS +
+                `Coalition at State` +
+                Trend +
+                as.factor(States)-1,
+              data=dataset))
+
+
+stargazer(Model11, Model21, Model31, type = 'text', omit = 10:36)
+
+stargazer(Model11, Model21, Model31, type = 'latex', out = 'tablea1', omit = 10:36)
+
+
+### Models 4, 5, and 6 with alternative alignment variable
+
+
+Model41 <- (lm(log(SocExpPC) ~ Alignment2 +
+                log(GDPPC) +
+                HDI +
+                ElectionYear1 +
+                Turnout +
+                WinmargSS +
+                `Coalition at State` +
+                Alignment1*WinmargSS,
+              data=dataset))
+
+
+Model51 <- (lm(log(SocExpPC) ~ Alignment2 +
+                log(GDPPC) +
+                HDI +
+                ElectionYear1 +
+                Turnout +
+                WinmargSS +
+                `Coalition at State` +
+                Alignment1*WinmargSS +
+                as.factor(States)-1,
+              data=dataset))
+
+Model61 <- (lm(log(SocExpPC) ~ Alignment2 +
+                log(GDPPC) +
+                HDI +
+                ElectionYear1 +
+                Turnout +
+                WinmargSS +
+                `Coalition at State` +
+                Alignment1*WinmargSS +
+                Trend +
+                as.factor(States)-1,
+              data=dataset))
+
+
+stargazer(Model41, Model51, Model61, type = 'text', omit = c (10:36)) 
+
+stargazer(Model41, Model51, Model61, type = 'latex', out = 'tablea2', omit = c (10:36)) 
+
+### Models 1, 2, and 3 controlling for level of urbanization
+
+#checked for skeweness in the variable, moderately right-skewed, so will take log of agriNDP like we did with gdppc
+#install.packages("moments")
+#library(moments)
+#skewness(dataset$GDPPC, na.rm = TRUE)
+#skewness(dataset$AgriNDP, na.rm = TRUE)
+
+
+Model12 <- (lm(log(SocExpPC) ~ Alignment1 +
+                 log(AgriNDP) +
+                 HDI +
+                 ElectionYear1 +
+                 Turnout +
+                 WinmargSS +
+                 `Coalition at State`,
+               data=dataset))
+
+
+Model22 <- (lm(log(SocExpPC) ~ Alignment1 +
+                 log(AgriNDP) +
+                 HDI +
+                 ElectionYear1 +
+                 Turnout +
+                 WinmargSS +
+                 `Coalition at State` +
+                 as.factor(States)-1,
+               data=dataset))
+
+
+Model32 <- (lm(log(SocExpPC) ~ Alignment1 +
+                 log(AgriNDP) +
+                 HDI +
+                 ElectionYear1 +
+                 Turnout +
+                 WinmargSS +
+                 `Coalition at State` +
+                 Trend +
+                 as.factor(States)-1,
+               data=dataset))
+
+
+stargazer(Model12, Model22, Model32, type = 'text', omit = 10:36)
+
+stargazer(Model12, Model22, Model32, type = 'latex', out = 'tablea3', omit = 10:36)
+
+### Models 4, 5, and 6 controlling for level of urbanization
+
+
+Model42 <- (lm(log(SocExpPC) ~ Alignment1 +
+                log(AgriNDP) +
+                HDI +
+                ElectionYear1 +
+                Turnout +
+                WinmargSS +
+                `Coalition at State` +
+                Alignment1*WinmargSS,
+              data=dataset))
+
+
+Model52 <- (lm(log(SocExpPC) ~ Alignment1 +
+                log(AgriNDP) +
+                HDI +
+                ElectionYear1 +
+                Turnout +
+                WinmargSS +
+                `Coalition at State` +
+                Alignment1*WinmargSS +
+                as.factor(States)-1,
+              data=dataset))
+
+Model62 <- (lm(log(SocExpPC) ~ Alignment1 +
+                log(AgriNDP) +
+                HDI +
+                ElectionYear1 +
+                Turnout +
+                WinmargSS +
+                `Coalition at State` +
+                Alignment1*WinmargSS +
+                Trend +
+                as.factor(States)-1,
+              data=dataset))
+
+
+stargazer(Model42, Model52, Model62, type = 'text', omit = c (10:36))
+
+stargazer(Model42, Model52, Model62, type = 'latex', out = "tablea4", omit = c (10:36))
+
+
+### Models 1, 2, and 3 controlling for literacy levels
+
+Model13 <- (lm(log(SocExpPC) ~ Alignment1 +
+                 log(GDPPC) +
+                 LitRate +
+                 HDI +
+                 ElectionYear1 +
+                 Turnout +
+                 WinmargSS +
+                 `Coalition at State`,
+               data=dataset))
+
+
+Model23 <- (lm(log(SocExpPC) ~ Alignment1 +
+                 log(GDPPC) +
+                 LitRate +
+                 HDI +
+                 ElectionYear1 +
+                 Turnout +
+                 WinmargSS +
+                 `Coalition at State` +
+                 as.factor(States)-1,
+               data=dataset))
+
+
+Model33 <- (lm(log(SocExpPC) ~ Alignment1 +
+                 log(GDPPC) +
+                 LitRate +
+                 HDI +
+                 ElectionYear1 +
+                 Turnout +
+                 WinmargSS +
+                 `Coalition at State` +
+                 Trend +
+                 as.factor(States)-1,
+               data=dataset))
+
+
+stargazer(Model13, Model23, Model33, type = 'text', omit = 11:37)
+
+stargazer(Model13, Model23, Model33, type = 'latex', out = 'tablea5', omit = 11:37)
+
+
+### Models 4, 5, and 6 controlling for literacy levels
+
+Model43 <- (lm(log(SocExpPC) ~ Alignment1 +
+                log(GDPPC) +
+                LitRate +
+                HDI +
+                ElectionYear1 +
+                Turnout +
+                WinmargSS +
+                `Coalition at State` +
+                Alignment1*WinmargSS,
+              data=dataset))
+
+
+Model53 <- (lm(log(SocExpPC) ~ Alignment1 +
+                log(GDPPC) +
+                LitRate +
+                HDI +
+                ElectionYear1 +
+                Turnout +
+                WinmargSS +
+                `Coalition at State` +
+                Alignment1*WinmargSS +
+                as.factor(States)-1,
+              data=dataset))
+
+Model63 <- (lm(log(SocExpPC) ~ Alignment1 +
+                log(GDPPC) +
+                LitRate +
+                HDI +
+                ElectionYear1 +
+                Turnout +
+                WinmargSS +
+                `Coalition at State` +
+                Alignment1*WinmargSS +
+                Trend +
+                as.factor(States)-1,
+              data=dataset))
+
+
+stargazer(Model43, Model53, Model63, type = 'text', omit = c (11:37)) 
+
+stargazer(Model43, Model53, Model63, type = 'latex', out = 'tablea6', omit = c (11:37)) 
