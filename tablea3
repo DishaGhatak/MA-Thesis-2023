@@ -1,0 +1,55 @@
+
+% Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
+% Date and time: Thu, Jul 18, 2024 - 16:24:07
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{3}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-4} 
+\\[-1.8ex] & \multicolumn{3}{c}{log(SocExpPC)} \\ 
+\\[-1.8ex] & (1) & (2) & (3)\\ 
+\hline \\[-1.8ex] 
+ Alignment1 & 0.507$^{***}$ & 0.038$^{*}$ & 0.020 \\ 
+  & (0.128) & (0.021) & (0.013) \\ 
+  & & & \\ 
+ log(AgriNDP) & 0.043 & 0.249$^{***}$ & $-$0.067$^{***}$ \\ 
+  & (0.037) & (0.023) & (0.017) \\ 
+  & & & \\ 
+ HDI & 5.303$^{***}$ & 10.750$^{***}$ & 1.090$^{***}$ \\ 
+  & (0.793) & (0.286) & (0.330) \\ 
+  & & & \\ 
+ ElectionYear1 & $-$0.051 & $-$0.044$^{*}$ & $-$0.012 \\ 
+  & (0.156) & (0.023) & (0.015) \\ 
+  & & & \\ 
+ Turnout & 0.018$^{***}$ & 0.002$^{*}$ & 0.003$^{***}$ \\ 
+  & (0.006) & (0.001) & (0.001) \\ 
+  & & & \\ 
+ WinmargSS & 0.004 & $-$0.001 & $-$0.0005 \\ 
+  & (0.003) & (0.001) & (0.0003) \\ 
+  & & & \\ 
+ `Coalition at State` & $-$0.249$^{*}$ & $-$0.129$^{***}$ & $-$0.084$^{***}$ \\ 
+  & (0.143) & (0.029) & (0.018) \\ 
+  & & & \\ 
+ Trend &  &  & 0.108$^{***}$ \\ 
+  &  &  & (0.003) \\ 
+  & & & \\ 
+ as.factor(States)Andhra Pradesh &  &  &  \\ 
+  &  &  &  \\ 
+  & & & \\ 
+ Constant & $-$5.139$^{***}$ &  &  \\ 
+  & (0.599) &  &  \\ 
+  & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 832 & 832 & 832 \\ 
+R$^{2}$ & 0.127 & 0.982 & 0.993 \\ 
+Adjusted R$^{2}$ & 0.119 & 0.981 & 0.993 \\ 
+Residual Std. Error & 1.806 (df = 824) & 0.267 (df = 797) & 0.168 (df = 796) \\ 
+F Statistic & 17.065$^{***}$ (df = 7; 824) & 1,257.185$^{***}$ (df = 35; 797) & 3,121.339$^{***}$ (df = 36; 796) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{3}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 
