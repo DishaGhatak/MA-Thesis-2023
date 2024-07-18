@@ -468,3 +468,5 @@ Model63 <- (lm(log(SocExpPC) ~ Alignment1 +
 stargazer(Model43, Model53, Model63, type = 'text', omit = c (11:37)) 
 
 stargazer(Model43, Model53, Model63, type = 'latex', out = 'tablea6', omit = c (11:37)) 
+
+wtf
