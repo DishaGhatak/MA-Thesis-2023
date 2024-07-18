@@ -473,3 +473,4 @@ stargazer(Model43, Model53, Model63, type = 'latex', out = 'tablea6', omit = c (
 yes
 
 wtf
+git merge --abort
